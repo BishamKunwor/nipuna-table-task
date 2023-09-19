@@ -1,11 +1,12 @@
 import { ReactNode } from 'react'
-import NavBar from '../NavBar/Index'
+import NavBar from '../NavBar'
+import SideBarMenu from '../SideBarMenu'
 
 export default function Layout ({ children }: { children?: ReactNode }) {
   return (
     <>
       <NavBar />
-      {children}
+      <SideBarMenu>{children}</SideBarMenu>
     </>
   )
 }
