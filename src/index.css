@@ -15,3 +15,11 @@ body {
   background-color: #ededf3;
   font-family: "Inter", sans-serif;
 }
+
+.ant-table-column-title {
+  flex-grow: 0 !important;
+}
+
+.ant-table-filter-column {
+  padding: 8px 16px;
+}

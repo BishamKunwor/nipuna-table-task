@@ -65,7 +65,7 @@ export default function SideBarMenu ({ children }: { children?: ReactNode }) {
           </ul>
         </main>
       </aside>
-      <section className='w-full bg-red-100 h-screen'>{children}</section>
+      <section className='w-full overflow-clip'>{children}</section>
     </section>
   )
 }
