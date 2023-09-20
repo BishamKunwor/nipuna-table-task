@@ -5,6 +5,17 @@
 
 :root {
   --h1: #101828;
+  --h2-highlight: #344054;
+  --h3: #475467;
+  --h4: #667085;
+  --hover: #ebebf8;
+  --hyperlink: #4786e7;
+  --bg-main: #ededf3;
+  --primary: #7474c9;
+  --toggle-icon-grey: #9696a4a8;
+  --green: #4ac86e;
+  --border: #d0d5dd;
+  --divider: #eaecf0;
 }
 
 h1 {
