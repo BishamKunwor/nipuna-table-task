@@ -1,6 +1,6 @@
 import { Table, ConfigProvider, Input, Button } from 'antd'
 import { ColumnsType } from 'antd/es/table'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 interface UserDataType {
   name: string
@@ -33,7 +33,7 @@ function generateDataSource () {
       email: 'novelian.nova@gmail.com',
       imageUrl: 'url',
       addedFrom: 'System',
-      tags: '',
+      tags: '-',
       internalId: 'ID296',
       clientId: '-',
       phone: '+9779867****',
@@ -67,21 +67,20 @@ const columnDetails = [
   { dataIndex: 'status', title: 'Status', width: 91 },
   { dataIndex: 'applications', title: 'Applications', width: 125 },
   { dataIndex: 'lastUpdated', title: 'Last Updated', width: 131 },
-  { dataIndex: 'addColumns', title: '', width: 171 }
+  { dataIndex: 'addColumns', title: '', width: 81 }
 ]
 
 export default function EditableTable () {
-  // const columnsdf: ColumnsType<UserDataType> = [
-  //   {
-  //     sortIcon
-  //   }
-  // ]
   const _columns = useMemo(() => {
     return columnDetails.map(columnDetails => {
       const response = {
         ...columnDetails,
         key: columnDetails.dataIndex,
-        title: <p className='whitespace-nowrap'>{columnDetails.title}</p>,
+        title: (
+          <div className='h-[34px] flex items-center'>
+            <p className='whitespace-nowrap'>{columnDetails.title}</p>
+          </div>
+        ),
         filterIcon: () => {
           return (
             <svg
@@ -238,14 +237,20 @@ export default function EditableTable () {
     [hiddenColumns]
   )
 
+  useEffect(() => {
+    document.querySelector('#addColumnTitle')?.parentElement?.remove()
+  })
+
   useMemo(() => {
     setColumns(prevState => {
       prevState[prevState.length - 1] = {
         dataIndex: 'addColumns',
-        width: 171,
+        width: 131,
+        title: <div id='addColumnTitle'></div>,
+
         filterIcon: () => {
           return (
-            <div className='flex items-center gap-2'>
+            <div id='showColumnsHeader' className='flex items-center gap-2'>
               <p>+ Add Column</p>
             </div>
           )
@@ -338,15 +343,16 @@ export default function EditableTable () {
             components: {
               Table: {
                 cellFontSize: 12,
-                paddingContentVerticalLG: 0,
-                padding: 0
+                paddingContentVerticalLG: 8,
+                padding: 16,
+                controlHeight: 34
               },
               Input: {
-                controlHeightLG: 50,
+                controlHeight: 34,
                 borderRadius: 2,
                 fontSize: 12,
                 colorBorder: 'transparent',
-                paddingInline: 16,
+                paddingInline: 0,
                 paddingBlock: 8,
                 colorBgContainer: 'transparent'
               }
@@ -367,7 +373,7 @@ export default function EditableTable () {
             pagination={false}
             dataSource={dataSource}
             scroll={{
-              x: 1444,
+              x: 1970,
               y: 300
             }}
           />
