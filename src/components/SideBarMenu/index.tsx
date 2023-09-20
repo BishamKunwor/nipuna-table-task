@@ -1,3 +1,4 @@
+import { ConfigProvider, Input } from 'antd'
 import { ReactNode } from 'react'
 
 const sideBarMenu = [
@@ -22,30 +23,69 @@ const sideBarMenu = [
     url: '#Clients'
   },
   {
-    iconUrl: '',
+    iconUrl: '/icons/menu/verify.svg',
     title: 'Services',
     url: '#Services'
   },
   {
-    iconUrl: '',
+    iconUrl: '/icons/menu/file-attachment.svg',
     title: 'Quotation',
     url: '#Quotation'
   },
   {
-    iconUrl: '',
+    iconUrl: '/icons/menu/task-square.svg',
     title: 'Tasks',
     url: '#Tasks'
   }
 ]
 export default function SideBarMenu ({ children }: { children?: ReactNode }) {
   return (
-    <section className='flex mt-2'>
-      <aside className='bg-white mr-2 w-[15rem]'>
-        <header className='pl-6'>
+    <section className='flex mt-2 h-[calc(100vh-80px)]'>
+      <aside className='bg-white mr-2 relative'>
+        <header className='pl-6 py-3 flex gap-2'>
           <h2>CRM</h2>
+          <button>
+            <img src='/icons/menu/chevron-down.svg' title='Collapse Menu' />
+          </button>
         </header>
+        <button className='bg-slate-300 absolute top-0 right-0'>
+          <img src='/icons/menu/chevron-left.svg' title='Collapse SideNav' />
+        </button>
         <main className='p-6 pt-2'>
-          <ul className=''>
+          <ConfigProvider
+            theme={{
+              components: {
+                Input: {
+                  borderRadius: 4
+                }
+              }
+            }}
+          >
+            <Input
+              className='px-3 py-2'
+              placeholder='Search'
+              prefix={
+                <svg
+                  className='mr-2'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    d='M21 21L17.5001 17.5M20 11.5C20 16.1944 16.1944 20 11.5 20C6.80558 20 3 16.1944 3 11.5C3 6.80558 6.80558 3 11.5 3C16.1944 3 20 6.80558 20 11.5Z'
+                    stroke='#667085'
+                    stroke-width='1.5'
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                  />
+                </svg>
+              }
+              suffix={<img src='/icons/dots-horizontal.svg' title='Menu' />}
+            />
+          </ConfigProvider>
+          <ul className='min-w-[192px] mt-6'>
             {sideBarMenu.map(menuItem => {
               return (
                 <li>
@@ -53,9 +93,9 @@ export default function SideBarMenu ({ children }: { children?: ReactNode }) {
                     href={menuItem.url || '#'}
                     className='px-3 py-2 hover:bg-red-300 rounded-sm transition-all text-sm flex justify-between'
                   >
-                    <aside className='flex gap-3'>
+                    <aside className='flex gap-3 items-center'>
                       <img src={menuItem.iconUrl} title={menuItem.title} />
-                      <p>{menuItem.title}</p>
+                      <p className='text-xs'>{menuItem.title}</p>
                     </aside>
                     <img src='/icons/dots-horizontal.svg' title='Menu' />
                   </a>

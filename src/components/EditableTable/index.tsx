@@ -71,11 +71,17 @@ const columnDetails = [
 ]
 
 export default function EditableTable () {
+  // const columnsdf: ColumnsType<UserDataType> = [
+  //   {
+  //     sortIcon
+  //   }
+  // ]
   const _columns = useMemo(() => {
     return columnDetails.map(columnDetails => {
       const response = {
         ...columnDetails,
         key: columnDetails.dataIndex,
+        title: <p className='whitespace-nowrap'>{columnDetails.title}</p>,
         filterIcon: () => {
           return (
             <svg
@@ -119,8 +125,28 @@ export default function EditableTable () {
             </Button>
           </div>
         ),
+        sortIcon () {
+          return (
+            <svg
+              className='ml-2'
+              xmlns='http://www.w3.org/2000/svg'
+              width='8'
+              height='12'
+              viewBox='0 0 8 12'
+              fill='none'
+            >
+              <path
+                d='M1.08328 7.75004L3.99995 10.6667L6.91662 7.75004M1.08328 4.25004L3.99995 1.33337L6.91662 4.25004'
+                stroke='#D0D5DD'
+                stroke-width='1.05'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+              />
+            </svg>
+          )
+        },
         sorter (a: UserDataType, b: UserDataType) {
-          return a.name.length - b.name.length
+          return a.name?.length - b.name?.length
         },
         render (value: undefined | string | number, record: UserDataType) {
           if (record.isAddBtn) {
@@ -153,8 +179,6 @@ export default function EditableTable () {
                     <Input defaultValue={record.name} />
                     <Input defaultValue={record.email} />
                   </ConfigProvider>
-                  {/* <p className='leading-[16.8px]'>{record.name}</p>
-                  <p className='leading-[16.8px]'>{record.email}</p> */}
                 </div>
               </div>
             )
@@ -165,7 +189,7 @@ export default function EditableTable () {
           ...columnDetails,
           filterIcon: () => {
             return (
-              <div className='flex items-center gap-2'>
+              <div id='addColumnId' className='flex items-center gap-2'>
                 <p>+ Add Column</p>
               </div>
             )
@@ -318,7 +342,7 @@ export default function EditableTable () {
                 padding: 0
               },
               Input: {
-                controlHeightLG: 34,
+                controlHeightLG: 50,
                 borderRadius: 2,
                 fontSize: 12,
                 colorBorder: 'transparent',
@@ -337,6 +361,7 @@ export default function EditableTable () {
             rowSelection={{
               type: 'checkbox'
             }}
+            // @ts-ignore
             columns={columns}
             bordered
             pagination={false}
