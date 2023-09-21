@@ -1,4 +1,4 @@
-import { Select } from "antd";
+import { Select } from 'antd'
 
 export default function ClientHeader () {
   return (
@@ -11,17 +11,20 @@ export default function ClientHeader () {
             className='h-6 w-6'
           />
         </button>
-        <p className='font-medium leading-[22.4px]'>Clients</p>
+        <p className='font-medium leading-[22.4px] text-[var(--h2-highlight)]'>
+          Clients
+        </p>
       </div>
-      <div className='flex gap-6 items-center'>
+      <div className='flex gap-5 items-center'>
         <Select
-          defaultValue='Branch(Kathmandu)'
+          className='w-40'
+          defaultValue={'Branch(Kathmandu)'}
           suffixIcon={
             <img src='/icons/menu/chevron-down.svg' title='Dropdown' />
           }
           options={[]}
         />
-        <button>
+        <button className='hover:bg-[var(--hover)] transition-all p-1'>
           <img
             src='/icons/dots-horizontal.svg'
             title='Open Config Panel'

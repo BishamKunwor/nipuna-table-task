@@ -12,12 +12,16 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         theme={{
           token: {
             borderRadius: 4,
-            colorPrimary: '#7474c9'
+            colorPrimary: '#7474c9',
+            fontFamily:
+              "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol','Noto Color Emoji'",
+            fontSize: 12
           },
           components: {
-            Button: {
-            },
-            Input: {}
+            Button: {},
+            Select: {
+              colorText: 'var(--h4)'
+            }
           }
         }}
       >
