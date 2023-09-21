@@ -18,12 +18,16 @@
   --divider: #eaecf0;
 }
 
+::selection {
+  background: var(--hover);
+}
+
 h1 {
   color: var(--h1, #101828);
 }
 
 body {
-  background-color: #ededf3;
+  background-color: var(--bg-main, #ededf3);
   font-family: "Inter", sans-serif;
 }
 
