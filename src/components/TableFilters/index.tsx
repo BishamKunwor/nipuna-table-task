@@ -158,8 +158,8 @@ export default function TableFilters ({ children }: { children: ReactNode }) {
             components: {
               Table: {
                 cellFontSize: 12,
-                paddingContentVerticalLG: 8,
-                padding: 16,
+                paddingContentVerticalLG: 0,
+                padding: 0,
                 controlHeight: 34
               },
               Input: {

@@ -37,7 +37,7 @@ export default function DashboardConfig () {
         <div className='md:cursor-pointer hover:bg-[var(--hover)] transition-all p-1'>
           <img
             src='/icons/plus.svg'
-            className={`rounded-full border`}
+            className={`rounded-full border border-dashed`}
             title='Add Task'
           />
         </div>

@@ -35,11 +35,15 @@ body {
   flex-grow: 0 !important;
 }
 
-/* .ant-table-filter-column {
-  padding: 8px 16px;
-} */
-
 .ant-table-tbody > tr > td {
   word-wrap: break-word;
   word-break: break-all;
+}
+
+table > thead > tr > th {
+  padding: 8px 16px !important;
+}
+
+table > tbody > tr > td {
+  /* background-color: red; */
 }

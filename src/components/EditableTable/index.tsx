@@ -26,12 +26,12 @@ interface UserDataType {
 
 function generateDataSource () {
   const dataSource = []
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 6; i++) {
     dataSource.push({
       key: i,
       name: 'Bisham Kunwor',
       email: 'novelian.nova@gmail.com',
-      imageUrl: 'url',
+      imageUrl: '/user-images/img-2.png',
       addedFrom: 'System',
       tags: '-',
       internalId: 'ID296',
@@ -44,7 +44,7 @@ function generateDataSource () {
         college: ''
       },
       followers: 'Allison',
-      status: 'Completed',
+      status: i % 2 == 0 ? 'Completed' : 'In Progress',
       applications: 8,
       lastUpdated: '2025-11-19',
       isAddBtn: false
@@ -55,7 +55,8 @@ function generateDataSource () {
 }
 
 const columnDetails = [
-  { dataIndex: 'name', title: 'Name', width: 171 },
+  // { dataIndex: 'name', title: 'Name', width: 171 },
+  { dataIndex: 'name', title: 'Name', width: 210 },
   { dataIndex: 'addedFrom', title: 'Added From', width: 121 },
   { dataIndex: 'tags', title: 'Tags', width: 81 },
   { dataIndex: 'internalId', title: 'Internal ID', width: 111 },
@@ -151,7 +152,11 @@ export default function EditableTable () {
           if (record.isAddBtn) {
             return <div className='h-8'></div>
           }
-          return <Input defaultValue={value} />
+          return (
+            <div className='px-4 py-2'>
+              <Input defaultValue={value} />
+            </div>
+          )
         }
       }
       if (columnDetails.dataIndex === 'name') {
@@ -160,24 +165,39 @@ export default function EditableTable () {
           render (value: undefined | string | number, record: UserDataType) {
             if (record.isAddBtn) {
               return (
-                <ConfigProvider
-                  theme={{
-                    components: {
-                      Button: {
-                        colorText: 'var(--h4)'
+                <div className='px-4 py-2'>
+                  <ConfigProvider
+                    theme={{
+                      components: {
+                        Button: {
+                          colorText: 'var(--h4)'
+                        }
                       }
-                    }
-                  }}
-                >
-                  <Button onClick={handleAddRow} type='text'>
-                    + Add Client’s details
-                  </Button>
-                </ConfigProvider>
+                    }}
+                  >
+                    <Button onClick={handleAddRow} type='text'>
+                      + Add Client’s details
+                    </Button>
+                  </ConfigProvider>
+                </div>
               )
             }
             return (
-              <div className='flex gap-1 items-center'>
-                <div className='w-7 aspect-square rounded-[4px] bg-gray-200'></div>
+              <div className='flex gap-2 items-center group px-4 py-2'>
+                <div className=''>
+                  {typeof record.imageUrl === 'string' &&
+                  record.imageUrl.length > 2 ? (
+                    <div className='rounded-[4px] w-7 aspect-square overflow-hidden'>
+                      <img
+                        src={record.imageUrl}
+                        title={record.name}
+                        className='object-cover h-full w-full'
+                      />
+                    </div>
+                  ) : (
+                    <div className='rounded-[4px] bg-gray-200 w-7 aspect-square'></div>
+                  )}
+                </div>
                 <div className=''>
                   <ConfigProvider
                     theme={{
@@ -189,9 +209,37 @@ export default function EditableTable () {
                       }
                     }}
                   >
-                    <Input defaultValue={record.name} />
+                    <ConfigProvider
+                      theme={{
+                        components: {
+                          Input: {
+                            colorText: 'var(--h2-highlight)'
+                          }
+                        }
+                      }}
+                    >
+                      <Input defaultValue={record.name} />
+                    </ConfigProvider>
                     <Input defaultValue={record.email} />
                   </ConfigProvider>
+                </div>
+                <div className='group-hover:opacity-100 group-hover:pointer-events-auto cursor-pointer opacity-0 pointer-events-none border rounded-full border-dashed border-slate-400'>
+                  <svg
+                    className='m-1 h-3 w-3'
+                    width='14'
+                    height='14'
+                    viewBox='0 0 14 14'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      d='M7.00001 2.91666V11.0833M2.91667 6.99999H11.0833'
+                      stroke='#667085'
+                      stroke-width='0.583333'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                    />
+                  </svg>
                 </div>
               </div>
             )
@@ -214,6 +262,137 @@ export default function EditableTable () {
               className='flex flex-col gap-2'
             ></div>
           )
+        }
+      } else if (columnDetails.dataIndex === 'assignee') {
+        return {
+          ...response,
+          render (value: undefined | string | number, record: UserDataType) {
+            if (record.isAddBtn) {
+              return <div className='h-8'></div>
+            }
+            return (
+              <div className='flex gap-2 items-center group px-4 py-2'>
+                <div className=''>
+                  {typeof record.imageUrl === 'string' &&
+                  record.imageUrl.length > 2 ? (
+                    <div className='rounded-[4px] w-7 aspect-square overflow-hidden'>
+                      <img
+                        src={record.imageUrl}
+                        title={record.name}
+                        className='object-cover h-full w-full'
+                      />
+                    </div>
+                  ) : (
+                    <div className='rounded-[4px] bg-gray-200 w-7 aspect-square'></div>
+                  )}
+                </div>
+                <div className=''>
+                  <ConfigProvider
+                    theme={{
+                      components: {
+                        Input: {
+                          paddingBlock: 0,
+                          paddingInline: 0
+                        }
+                      }
+                    }}
+                  >
+                    <ConfigProvider
+                      theme={{
+                        components: {
+                          Input: {
+                            colorText: 'var(--h2-highlight)'
+                          }
+                        }
+                      }}
+                    >
+                      <Input defaultValue={record.name} />
+                    </ConfigProvider>
+                    <Input defaultValue={record.email} />
+                  </ConfigProvider>
+                </div>
+                <div className='md:cursor-pointer'>
+                  <svg
+                    className='m-1 h-3 w-3'
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='14'
+                    height='14'
+                    viewBox='0 0 14 14'
+                    fill='none'
+                  >
+                    <path
+                      d='M11.6666 4.08333H5.83331C3.90032 4.08333 2.33331 5.65034 2.33331 7.58333C2.33331 9.51633 3.90032 11.0833 5.83331 11.0833H11.6666M11.6666 4.08333L9.33331 1.75M11.6666 4.08333L9.33331 6.41667'
+                      stroke='#667085'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                    />
+                  </svg>
+                </div>
+              </div>
+            )
+          }
+        }
+      } else if (columnDetails.dataIndex === 'followers') {
+        return {
+          ...response,
+          render (value: undefined | string | number, record: UserDataType) {
+            if (record.isAddBtn) {
+              return <div className='h-8'></div>
+            }
+            return (
+              <div className='flex items-center px-4 py-2'>
+                <Input defaultValue={value} />
+                <div className='md:cursor-pointer'>
+                  <svg
+                    className='m-1 h-3 w-3'
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='14'
+                    height='14'
+                    viewBox='0 0 14 14'
+                    fill='none'
+                  >
+                    <path
+                      d='M11.6666 4.08333H5.83331C3.90032 4.08333 2.33331 5.65034 2.33331 7.58333C2.33331 9.51633 3.90032 11.0833 5.83331 11.0833H11.6666M11.6666 4.08333L9.33331 1.75M11.6666 4.08333L9.33331 6.41667'
+                      stroke='#667085'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                    />
+                  </svg>
+                </div>
+              </div>
+            )
+          }
+        }
+      } else if (columnDetails.dataIndex === 'status') {
+        return {
+          ...response,
+          render (value: undefined | string | number, record: UserDataType) {
+            if (record.isAddBtn) {
+              return <div className='h-8'></div>
+            }
+            return (
+              <div
+                id='statusData'
+                className={`flex items-center h-full px-4 py-2 ${
+                  record.status === 'Completed'
+                    ? 'bg-[#4AC86E]'
+                    : 'bg-[#4786E7]'
+                }`}
+              >
+                <ConfigProvider
+                  theme={{
+                    components: {
+                      Input: {
+                        colorText: 'white'
+                      }
+                    }
+                  }}
+                >
+                  <Input defaultValue={value} />
+                </ConfigProvider>
+              </div>
+            )
+          }
         }
       }
       return response
@@ -264,8 +443,13 @@ export default function EditableTable () {
 
         filterIcon: () => {
           return (
-            <div id='showColumnsHeader' className='flex items-center gap-2 pl-4'>
-              <p className='text-xs text-[var(--h4)] font-normal'>+ Add Column</p>
+            <div
+              id='showColumnsHeader'
+              className='flex items-center gap-2 pl-4'
+            >
+              <p className='text-xs text-[var(--h4)] font-normal'>
+                + Add Column
+              </p>
             </div>
           )
         },
@@ -345,6 +529,14 @@ export default function EditableTable () {
       ]
     })
   }, [])
+
+  // useEffect(() => {
+  //   document
+  //     .querySelectorAll('#statusData')[0]
+  //     .parentElement?.addEventListener('mouseenter', e => {
+  //       console.log(e.target.classList.add("bg-red-100"))
+  //     })
+  // })
 
   if (columns.length === 0) return null
 
