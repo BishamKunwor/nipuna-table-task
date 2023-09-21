@@ -25,7 +25,19 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               colorText: 'var(--h4)'
             },
             Table: {
-              borderColor: 'var(--divider)'
+              borderColor: 'var(--divider)',
+              headerBg: 'transparent',
+              colorBgContainer: 'transparent',
+              filterDropdownBg: 'white',
+              headerColor: 'var(--h2-highlight)',
+              headerFilterHoverBg: 'var(--hover)',
+              headerSortActiveBg: 'var(--hover)',
+              headerSortHoverBg: 'var(--hover)',
+              rowHoverBg: 'var(--hover)',
+              colorFillAlter: '#ebebf8',
+              colorText: 'var(--h4)',
+              lineWidth: 0.5,
+              rowSelectedBg: 'transparent'
             }
           }
         }}

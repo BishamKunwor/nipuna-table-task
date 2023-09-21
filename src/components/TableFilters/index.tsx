@@ -152,29 +152,35 @@ export default function TableFilters ({ children }: { children: ReactNode }) {
           </button>
         </div>
       </nav>
-      <ConfigProvider
-        theme={{
-          components: {
-            Table: {
-              cellFontSize: 12,
-              paddingContentVerticalLG: 8,
-              padding: 16,
-              controlHeight: 34
-            },
-            Input: {
-              controlHeight: 34,
-              borderRadius: 2,
-              fontSize: 12,
-              colorBorder: 'transparent',
-              paddingInline: 0,
-              paddingBlock: 8,
-              colorBgContainer: 'transparent'
+      <div className=''>
+        <ConfigProvider
+          theme={{
+            components: {
+              Table: {
+                cellFontSize: 12,
+                paddingContentVerticalLG: 8,
+                padding: 16,
+                controlHeight: 34
+              },
+              Input: {
+                controlHeight: 34,
+                borderRadius: 2,
+                fontSize: 12,
+                colorBorder: 'transparent',
+                paddingInline: 0,
+                paddingBlock: 8,
+                colorBgContainer: 'transparent'
+              },
+              Checkbox: {
+                colorWhite: 'var(--primary)',
+                colorPrimary: 'var(--hover)'
+              }
             }
-          }
-        }}
-      >
-        {children}
-      </ConfigProvider>
+          }}
+        >
+          {children}
+        </ConfigProvider>
+      </div>
     </main>
   )
 }

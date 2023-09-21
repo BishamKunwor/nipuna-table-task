@@ -4,7 +4,7 @@ import TableFilters from '../TableFilters'
 
 export default function DashBoard ({ children }: { children: ReactNode }) {
   return (
-    <section>
+    <section className='h-full'>
       <ClientHeader />
       <TableFilters>{children}</TableFilters>
     </section>
