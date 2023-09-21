@@ -360,7 +360,6 @@ export function useTableHooks () {
 
   const handleColumnShow = useCallback(
     (dataIndex: string) => {
-      console.log('show ', dataIndex)
       setColumns(prevState => {
         const newColumnData = [...prevState]
         const showColumnData = _columns.filter(data => {
@@ -485,22 +484,22 @@ export function useTableHooks () {
     })
   }, [])
 
-  useEffect(() => {
-    document.querySelectorAll('.statusCell').forEach((element, index) => {
-      if (index === 0) return
-      console.log(element)
-      const isCompleted =
-        // @ts-ignore
-        element.children[0]?.children[0]?.value === 'Completed'
-      if (isCompleted) {
-        element.classList.add('green')
-        return
-        // @ts-ignore
-      } else if (element.children[0]?.children[0]?.value === 'In Progress') {
-        element.classList.add('blue')
-      }
-    })
-  })
+  // useEffect(() => {
+  //   document.querySelectorAll('.statusCell').forEach((element, index) => {
+  //     if (index === 0) return
+  //     console.log(element)
+  //     const isCompleted =
+  //       // @ts-ignore
+  //       element.children[0]?.children[0]?.value === 'Completed'
+  //     if (isCompleted) {
+  //       element.classList.add('green')
+  //       return
+  //       // @ts-ignore
+  //     } else if (element.children[0]?.children[0]?.value === 'In Progress') {
+  //       element.classList.add('blue')
+  //     }
+  //   })
+  // })
 
   return {
     columns,
