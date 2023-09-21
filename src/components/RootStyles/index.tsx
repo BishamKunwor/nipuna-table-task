@@ -21,6 +21,22 @@ export default function RootStyles ({ children }: { children: ReactNode }) {
             Select: {
               colorText: 'var(--h4)'
             },
+            // Table: {
+            //   borderColor: 'var(--divider)',
+            //   headerBg: 'transparent',
+            //   colorBgContainer: 'transparent',
+            //   filterDropdownBg: 'white',
+            //   headerColor: 'var(--h2-highlight)',
+            //   headerFilterHoverBg: 'var(--hover)',
+            //   headerSortActiveBg: 'var(--hover)',
+            //   headerSortHoverBg: 'var(--hover)',
+            //   rowHoverBg: 'var(--hover)',
+            //   colorFillAlter: '#ebebf8',
+            //   colorText: 'var(--h4)',
+            //   lineWidth: 0.5,
+            //   rowSelectedBg: 'transparent',
+            //   fontWeightStrong: 500
+            // }
             Table: {
               borderColor: 'var(--divider)',
               headerBg: 'transparent',
@@ -30,11 +46,12 @@ export default function RootStyles ({ children }: { children: ReactNode }) {
               headerFilterHoverBg: 'var(--hover)',
               headerSortActiveBg: 'var(--hover)',
               headerSortHoverBg: 'var(--hover)',
-              rowHoverBg: 'var(--hover)',
-              colorFillAlter: '#ebebf8',
+              rowHoverBg: 'transparent',
+              colorFillAlter: 'transparent',
               colorText: 'var(--h4)',
               lineWidth: 0.5,
-              rowSelectedBg: 'transparent'
+              rowSelectedBg: 'transparent',
+              fontWeightStrong: 500
             }
           }
         }}

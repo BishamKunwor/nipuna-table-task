@@ -159,7 +159,21 @@ export default function EditableTable () {
           ...response,
           render (value: undefined | string | number, record: UserDataType) {
             if (record.isAddBtn) {
-              return <Button onClick={handleAddRow}>Add More</Button>
+              return (
+                <ConfigProvider
+                  theme={{
+                    components: {
+                      Button: {
+                        colorText: 'var(--h4)'
+                      }
+                    }
+                  }}
+                >
+                  <Button onClick={handleAddRow} type='text'>
+                    + Add Client’s details
+                  </Button>
+                </ConfigProvider>
+              )
             }
             return (
               <div className='flex gap-1 items-center'>
@@ -250,8 +264,8 @@ export default function EditableTable () {
 
         filterIcon: () => {
           return (
-            <div id='showColumnsHeader' className='flex items-center gap-2'>
-              <p>+ Add Column</p>
+            <div id='showColumnsHeader' className='flex items-center gap-2 pl-4'>
+              <p className='text-xs text-[var(--h4)] font-normal'>+ Add Column</p>
             </div>
           )
         },

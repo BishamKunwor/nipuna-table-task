@@ -1,6 +1,6 @@
 import { ConfigProvider, DatePicker, Input, Select } from 'antd'
 import { ReactNode } from 'react'
-import IconsRenderer from '../hooks/iconsRenderer'
+import IconsRenderer from '../hooks/IconsRenderer'
 
 export default function TableFilters ({ children }: { children: ReactNode }) {
   IconsRenderer()
@@ -169,7 +169,8 @@ export default function TableFilters ({ children }: { children: ReactNode }) {
                 colorBorder: 'transparent',
                 paddingInline: 0,
                 paddingBlock: 8,
-                colorBgContainer: 'transparent'
+                colorBgContainer: 'transparent',
+                colorText: 'var(--h4)'
               },
               Checkbox: {
                 colorWhite: 'var(--primary)',
