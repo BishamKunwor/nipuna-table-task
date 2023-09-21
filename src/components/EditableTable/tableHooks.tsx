@@ -117,6 +117,7 @@ export function useTableHooks () {
         return {
           ...response,
           render (value: undefined | string | number, record: UserDataType) {
+            value
             if (record.isAddBtn) {
               return (
                 <div className='px-4 py-2'>
@@ -221,6 +222,7 @@ export function useTableHooks () {
         return {
           ...response,
           render (value: undefined | string | number, record: UserDataType) {
+            value
             if (record.isAddBtn) {
               return <div className='h-8'></div>
             }
@@ -331,7 +333,9 @@ export function useTableHooks () {
                 className={`flex items-center h-full px-4 py-2 ${
                   record.status === 'Completed'
                     ? 'bg-[#4AC86E]'
-                    : 'bg-[#4786E7]'
+                    : record.status === 'In Progress'
+                    ? 'bg-[#4786E7]'
+                    : ''
                 }`}
               >
                 <ConfigProvider
