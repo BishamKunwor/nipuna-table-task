@@ -6,7 +6,7 @@ export default function TableFilters ({ children }: { children: ReactNode }) {
   IconsRenderer()
   return (
     <main className='h-full w-full bg-white rounded'>
-      <nav className='h-[72px] border-b px-6 flex justify-between items-center pl-6'>
+      <nav className='h-[72px] border-b-[0.5px] border-b-[var(--hover)] px-6 flex justify-between items-center pl-6'>
         <div className='flex items-center gap-5'>
           <Input
             className='max-w-[12.75rem]'
