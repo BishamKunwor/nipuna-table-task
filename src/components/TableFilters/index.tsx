@@ -1,17 +1,19 @@
 import { DatePicker, Input, Select } from 'antd'
 import { ReactNode } from 'react'
+import IconsRenderer from '../hooks/iconsRenderer'
 
 export default function TableFilters ({ children }: { children: ReactNode }) {
+  IconsRenderer()
   return (
-    <main className='h-full w-full bg-white'>
+    <main className='h-full w-full bg-white rounded'>
       <nav className='h-[72px] border-b px-6 flex justify-between items-center pl-6'>
         <div className='flex items-center gap-5'>
           <Input
-            className='px-2 py-[6px]'
+            className='max-w-[12.75rem]'
             placeholder='Search Particular'
             prefix={
               <svg
-                className='mr-[6px]'
+                className='mr-[6px] h-5 w-5'
                 width='24'
                 height='24'
                 viewBox='0 0 24 24'
@@ -29,17 +31,46 @@ export default function TableFilters ({ children }: { children: ReactNode }) {
             }
           />
           <Select
+            className='w-[10.75rem] filterByID'
             defaultValue='Filter by assigned'
             suffixIcon={
               <img src='/icons/menu/chevron-down.svg' title='Dropdown' />
             }
             options={[]}
           />
-          <DatePicker />
+          <DatePicker
+            className='max-w-[6.5rem] dateContainer'
+            placeholder='Date'
+            suffixIcon={
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='20'
+                height='20'
+                viewBox='0 0 20 20'
+                fill='none'
+              >
+                <path
+                  d='M5 7.5L10 12.5L15 7.5'
+                  stroke='#667085'
+                  stroke-width='1.5'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                />
+              </svg>
+            }
+          />
+          <Select
+            className='w-[6.75rem] statusContainer'
+            defaultValue='Status'
+            suffixIcon={
+              <img src='/icons/menu/chevron-down.svg' title='Dropdown' />
+            }
+            options={[]}
+          />
         </div>
-        <div className='flex items-center gap-9'>
+        <div className='flex items-center gap-7'>
           <div className='flex items-center'>
-            <button className='flex items-center gap-[6px] text-xs leading-[16.8px]'>
+            <button className='flex items-center gap-[6px] text-xs leading-[16.8px] hover:bg-[var(--hover)] p-2 rounded transition-all'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='18'
@@ -57,7 +88,7 @@ export default function TableFilters ({ children }: { children: ReactNode }) {
               </svg>
               Filter
             </button>
-            <div className='mx-5'>
+            <div className='mx-2'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='2'
@@ -68,7 +99,7 @@ export default function TableFilters ({ children }: { children: ReactNode }) {
                 <path d='M1 1L1 21' stroke='#667085' stroke-linecap='round' />
               </svg>
             </div>
-            <button className='flex items-center gap-[6px] text-xs leading-[16.8px]'>
+            <button className='flex items-center gap-[6px] text-xs leading-[16.8px] hover:bg-[var(--hover)] p-2 rounded transition-all'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='20'
@@ -86,7 +117,7 @@ export default function TableFilters ({ children }: { children: ReactNode }) {
               </svg>
               Sort
             </button>
-            <div className='mx-5'>
+            <div className='mx-2'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='2'
@@ -97,7 +128,7 @@ export default function TableFilters ({ children }: { children: ReactNode }) {
                 <path d='M1 1L1 21' stroke='#667085' stroke-linecap='round' />
               </svg>
             </div>
-            <button className='flex items-center gap-[6px] text-xs leading-[16.8px]'>
+            <button className='flex items-center gap-[6px] text-xs leading-[16.8px] hover:bg-[var(--hover)] p-2 rounded transition-all'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='18'
@@ -116,7 +147,7 @@ export default function TableFilters ({ children }: { children: ReactNode }) {
               Saved Filter
             </button>
           </div>
-          <button className='text-sm font-medium leading-[19.6px] text-[#4786E7]'>
+          <button className='text-sm font-medium leading-[19.6px] text-[var(--hyperlink)] hover:text-blue-400 transition-all'>
             Clear
           </button>
         </div>

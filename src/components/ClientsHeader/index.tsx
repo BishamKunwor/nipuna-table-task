@@ -2,7 +2,7 @@ import { Select } from 'antd'
 
 export default function ClientHeader () {
   return (
-    <header className='h-[60px] items-center bg-white mb-2 px-6 flex justify-between'>
+    <header className='h-[60px] items-center bg-white mb-2 px-6 flex justify-between rounded'>
       <div className='flex items-center gap-3 '>
         <button>
           <img
