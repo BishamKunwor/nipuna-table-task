@@ -379,43 +379,21 @@ export default function EditableTable () {
         </ul>
       </div>
       <div className='pl-6'>
-        <ConfigProvider
-          theme={{
-            components: {
-              Table: {
-                cellFontSize: 12,
-                paddingContentVerticalLG: 8,
-                padding: 16,
-                controlHeight: 34
-              },
-              Input: {
-                controlHeight: 34,
-                borderRadius: 2,
-                fontSize: 12,
-                colorBorder: 'transparent',
-                paddingInline: 0,
-                paddingBlock: 8,
-                colorBgContainer: 'transparent'
-              }
-            }
+        <Table
+          tableLayout='auto'
+          rowSelection={{
+            type: 'checkbox'
           }}
-        >
-          <Table
-            tableLayout='auto'
-            rowSelection={{
-              type: 'checkbox'
-            }}
-            // @ts-ignore
-            columns={columns}
-            bordered
-            pagination={false}
-            dataSource={dataSource}
-            scroll={{
-              x: 1970,
-              y: 300
-            }}
-          />
-        </ConfigProvider>
+          // @ts-ignore
+          columns={columns}
+          bordered
+          pagination={false}
+          dataSource={dataSource}
+          scroll={{
+            x: 1970,
+            y: 500
+          }}
+        />
       </div>
     </>
   )

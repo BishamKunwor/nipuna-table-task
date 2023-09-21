@@ -1,4 +1,4 @@
-import { DatePicker, Input, Select } from 'antd'
+import { ConfigProvider, DatePicker, Input, Select } from 'antd'
 import { ReactNode } from 'react'
 import IconsRenderer from '../hooks/iconsRenderer'
 
@@ -152,7 +152,29 @@ export default function TableFilters ({ children }: { children: ReactNode }) {
           </button>
         </div>
       </nav>
-      {children}
+      <ConfigProvider
+        theme={{
+          components: {
+            Table: {
+              cellFontSize: 12,
+              paddingContentVerticalLG: 8,
+              padding: 16,
+              controlHeight: 34
+            },
+            Input: {
+              controlHeight: 34,
+              borderRadius: 2,
+              fontSize: 12,
+              colorBorder: 'transparent',
+              paddingInline: 0,
+              paddingBlock: 8,
+              colorBgContainer: 'transparent'
+            }
+          }
+        }}
+      >
+        {children}
+      </ConfigProvider>
     </main>
   )
 }

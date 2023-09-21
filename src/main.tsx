@@ -24,7 +24,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             Select: {
               colorText: 'var(--h4)'
             },
-            Input: {}
+            Table: {
+              borderColor: 'var(--divider)'
+            }
           }
         }}
       >
